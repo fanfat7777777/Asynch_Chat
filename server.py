@@ -4,15 +4,15 @@ import jim
 client_name = ''
 
 if __name__ == '__main__':
-    parser = chat.create_parser()
-    namespace = parser.parse_args()
+    parser = chat.create_parser()       # Объект для обработки коммандной строки
+    namespace = parser.parse_args()     # Возвращаем заполненное пространство имён
 
-    sock = chat.get_server_socket(namespace.addr, namespace.port)
+    sock = chat.get_server_socket(namespace.addr, namespace.port)   # указываем адрес + порт серверу
 
-    serv_addr = sock.getsockname()
+    serv_addr = sock.getsockname()      # Получаем адрес сокета
     print(f'Server started at {serv_addr[0]}:{serv_addr[1]}')
 
-    client, address = sock.accept()
+    client, address = sock.accept()     # Подключение клиента
     print(f'Client connected from {address[0]}:{address[1]}')
 
     while True:
